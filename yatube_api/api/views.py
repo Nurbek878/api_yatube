@@ -4,17 +4,10 @@ from rest_framework import permissions, viewsets
 
 from api.serializers import (CommentSerializer, GroupSerializer,
                              PostSerializer, UserSerializer)
+from api.permissions import OnlyAuthorCanChange
 from posts.models import Comment, Group, Post, User
 
 User = get_user_model()
-
-
-class OnlyAuthorCanChange(permissions.BasePermission):
-    message = 'Изменение чужого контента запрещено!'
-
-    def has_object_permission(self, request, view, obj):
-        return (request.method in permissions.SAFE_METHODS
-                or obj.author == request.user)
 
 
 class PostViewSet(viewsets.ModelViewSet):
