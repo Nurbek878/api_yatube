@@ -13,13 +13,14 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class GroupSerializer(serializers.ModelSerializer):
+
     class Meta:
         fields = '__all__'
         model = Group
 
 
 class UserSerializer(serializers.ModelSerializer):
-    posts = serializers.StringRelatedField(many=True, read_only=True)
+    posts = PostSerializer(many=True)
 
     class Meta:
         model = User
