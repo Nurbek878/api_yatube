@@ -5,7 +5,7 @@ from rest_framework import permissions, viewsets
 from api.serializers import (CommentSerializer, GroupSerializer,
                              PostSerializer, UserSerializer)
 from api.permissions import OnlyAuthorCanChange
-from posts.models import Comment, Group, Post, User
+from posts.models import Group, Post, User
 
 User = get_user_model()
 
